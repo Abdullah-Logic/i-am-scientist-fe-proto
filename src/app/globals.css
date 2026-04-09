@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-geist-croissant: "Croissant", sans-serif;
+}
+
+body {
+  background-color: #140a2e;
+  background-image: linear-gradient(to right, #0b0f2a, #312063, #0b0f2a);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.iambutton {
+  border-radius: 9999px; /* Fully rounded corners */
+
+  position: relative;
+  background-image: linear-gradient(
+    to bottom right,
+    #2e98fc,
+    #e01cf4
+  ); /* Gradient border */
+
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  border: none;
+  color: white; /* Text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  z-index: 1;
+}
+
+/* time picker  */
+
+input[type="time"] {
+  width: -webkit-fill-available;
+  background: transparent;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+   color: black;
+}
+
+.font-Croissant {
+  font-family: var(--font-geist-croissant);
+}
+
+.iambutton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2d1854;
+
+  border-radius: 9999px; /* Fully rounded corners for the gradient */
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+
+  border: 2px solid transparent; /* Creates space for the gradient border */
+  background-clip: padding-box; /* Ensures the gradient acts as a border, not filling the button */
+}
+
+.scroll-container {
+  width: 300px;
+  height: 200px; /* Set a specific height to see the scrollbar */
+  overflow-y: auto;
+  background-color: #171717;
+  padding: 10px;
+  margin: 20px;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 0.5px white; /* White stroke */
+  /* color: transparent; Make the text color transparent */
+}
+
+.content {
+  height: 400px; /* Ensure the content height is greater than the container */
+  background-color: #280253;
+  padding: 10px;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 10px;
+  border: 3px solid #171717;
+}
+
+.magicSchool::-webkit-scrollbar-track {
+  background: transparent;
+}
+.magicSchool::-webkit-scrollbar-thumb {
+  border: 0px;
+  background: #c407b9;
+}
+.magicSchool::-webkit-scrollbar {
+  width: 7px;
+}
+
+.iasScroll::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.iasScroll::-webkit-scrollbar-track {
+  background: lightgray;
+}
+.iasScroll::-webkit-scrollbar-thumb {
+  border: 0px;
+  background: #c407b9;
+}
+
+input[type="time"] {
+  width: -webkit-fill-available;
+  background: transparent;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
+  color: black;
+}
+
+.contact-input {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 15px;
+  border: 0;
+  outline: 0;
+  color: #ffffff;
+}
+
+.contact-textarea {
+  width: 100%;
+  line-height: 44px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 15px;
+  border: 0;
+  outline: 0;
+  color: #ffffff;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  outline: 2px solid #a46acb; /* Change the border color on focus */
+  box-shadow: 0 0 5px rgba(0, 187, 254, 0.5);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+/* for sliding the hero section imagess */
+
+.animate-slide-in {
+  animation: slideIn 0.7s forwards;
+}
+
+.animate-slide-out {
+  animation: slideOut 0.7s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border: none !important;
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid #ccc !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+
+.ql-formats {
+  color: white !important;
+}
+/* Remove number spinner arrows in Chrome, Edge, Safari */
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Chrome, Safari, Opera */
+  appearance: none;
+  -ms-appearance: none; /* Edge */
+}
+
+/* Remove arrows in Safari */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.customDatePickerWidth,
+.customDatePickerWidth > div.react-datepicker-wrapper,
+.customDatePickerWidth
+  > div
+  > div.react-datepicker__input-container
+  .customDatePickerWidth
+  > div
+  > div.react-datepicker__input-container
+  input {
+  width: 100%;
+}
+
+
+.cwd-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* space between icon and text */
+  padding: 6px 12px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cwd-back-btn svg {
+  font-size: 16px;
+  display: inline-block;
+}
+
+.cwd-back-btn:hover {
+  background: rgba(124, 58, 237, 0.3);
+  border-color: #a855f7;
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+
+/* Chatbot: scrollbar styling (migrated from removed src/styles/chatbot.css) */
+.chatbot-scroll-scope *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.chatbot-scroll-scope *::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chatbot-scroll-scope *::-webkit-scrollbar-thumb {
+  background: rgba(209, 18, 209, 0.2);
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+.chatbot-scroll-scope *::-webkit-scrollbar-thumb:hover {
+  background: rgba(209, 18, 209, 0.5);
+}
+.chatbot-scroll-scope * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(209, 18, 209, 0.2) transparent;
+}

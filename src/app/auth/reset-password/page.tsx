@@ -1,0 +1,182 @@
+
+"use client";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { FaLock } from "react-icons/fa";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+
+interface FormData {
+  
+  password:string
+  cpassword:string
+
+}
+
+interface FormErrors {
+
+  password?:string
+  cpassword?:string
+  
+}
+
+const Page: React.FC = () => {
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const reset_token = urlParams ? urlParams.get("token") : null;
+  const isAffiliate = urlParams ? urlParams.get("affiliate"): null;
+  const { setId, setRole } = useAuth();
+  const [formData, setFormData] = useState<FormData>({
+    password: "",
+    cpassword: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const router = useRouter();
+
+  const validate = (): boolean => {
+    const tempErrors: FormErrors = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    
+
+    if (!formData.password ) {
+        tempErrors.password = "Password is required.";
+      }
+      if (!formData.cpassword ) {
+        tempErrors.cpassword = "Confirm password is required.";
+      }
+    
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    if(formData.password === "" || formData.cpassword === ""){
+      toast.error("Please fill all the required fields");
+      return;
+    }
+    else if (formData.password !== formData.cpassword){
+      toast.error("Password do not match.");
+      return;
+    }
+    else if(!reset_token){
+      toast.error("Something went wrong. Try again later!");
+      return;
+    }
+
+    let endpoint = "user";
+      if(isAffiliate){
+        endpoint = "affiliate"
+      }
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("resetToken",reset_token);
+    formDataToSend.append("newPassword", formData.password)
+    e.preventDefault();
+    if (validate()) {
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}/reset-password`,
+          formDataToSend
+        );
+        if (response) {
+          toast.success("Password reset email sent successfully.");
+          router.push("/");
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("Error sending password reset email.");
+      }
+    }
+  };
+
+  return (
+    <>
+      <ToastContainer />
+      <div className="bg-[#280253] flex flex-col items-center h-auto py-8 justify-center font-popins">
+        {/* Decorative elements */}
+
+        <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute top-0 right-0 blur-xl rounded-tr-full rounded-br-full opacity-80"></div>
+        <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute top-0 left-0 blur-xl rounded-tr-full rounded-br-full opacity-80 z-10"></div>
+
+        <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute bottom-4 left-0 blur-xl rounded-tr-full rounded-br-full opacity-80 z-10"></div>
+        <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute bottom-4 right-0 blur-xl rounded-tr-full rounded-br-full opacity-80 z-10"></div>
+
+        {/* Form container */}
+        
+        <div
+          style={{
+            background:
+              "linear-gradient(191.13deg, #200339 8.76%, #2F0851 51.41%, #2F0851 92.39%)",
+          }}
+          className="p-8 rounded-lg shadow-lg w-[90%] sm:w-[70%] lg:w-[50%] text-white "
+        >
+          <h1 className="text-2xl md:text-4xl font-semibold text-center mb-6">
+            New Password
+          </h1>
+          <form onSubmit={handleSubmit}>
+            
+
+            <div className="mb-6 relative">
+              <label htmlFor="email" className="block text-gray-300 mb-2">
+                New   Password
+              </label>
+              <div className="flex items-center bg-[#0F2A5B] text-white rounded-md py-3 px-4">
+                <FaLock className="mr-3" />
+                <input
+                  type="password"
+                  id="email"
+                  name="password"
+                  placeholder="Enter New Password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full bg-[#0F2A5B] text-white placeholder-gray-400 focus:outline-none"
+                />
+              </div>
+              {errors.password && (
+                <p className="text-red-600 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
+            <div className="mb-6 relative">
+              <label htmlFor="email" className="block text-gray-300 mb-2">
+                Confirm New Password
+              </label>
+              <div className="flex items-center bg-[#0F2A5B] text-white rounded-md py-3 px-4">
+                <FaLock className="mr-3" />
+                <input
+                  type="password"
+                  id="email"
+                  name="cpassword"
+                  placeholder="Confirm New Password"
+                  value={formData.cpassword}
+                  onChange={handleChange}
+                  className="w-full bg-[#0F2A5B] text-white placeholder-gray-400 focus:outline-none"
+                />
+              </div>
+              {errors.cpassword && (
+                <p className="text-red-600 text-sm mt-1">{errors.cpassword}</p>
+              )}
+            </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-[#c407b9] hover:shadow-lg duration-500 ease-in-out hover:opacity-90 text-white font-bold py-2 rounded-md shadow-md transition"
+            >
+              Send
+            </button>
+          </form>
+
+       
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Page;
