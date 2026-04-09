@@ -18,11 +18,9 @@ import SummerCompetition from "../components/SummerCompetition";
 import { useEffect, useRef } from "react";
 
 const SummerContest = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-
-    const videoRef = useRef<HTMLVideoElement | null>(null);
-
-   useEffect(() => {
+  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
@@ -34,7 +32,7 @@ const SummerContest = () => {
           video.pause();
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.6 },
     );
 
     observer.observe(video);
@@ -43,7 +41,6 @@ const SummerContest = () => {
       observer.unobserve(video);
     };
   }, []);
-
 
   const summerContests = [
     {
@@ -119,49 +116,46 @@ const SummerContest = () => {
           <div className="absolute inset-0 bg-black/60 z-0" />
 
           <div className="relative z-10 flex flex-col items-center justify-center text-white px-4 py-16 sm:py-20 text-center">
+            {/* Top Badge */}
+            <div className="mb-6 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2 text-sm sm:text-base">
+              <span>🏆</span>
+              <span className="tracking-wide">NATIONAL LEVEL COMPETITION</span>
+            </div>
 
-  {/* Top Badge */}
-  <div className="mb-6 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2 text-sm sm:text-base">
-    <span>🏆</span>
-    <span className="tracking-wide">NATIONAL LEVEL COMPETITION</span>
-  </div>
+            {/* Heading */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight max-w-4xl">
+              Summer Contest{" "}
+              <span className="bg-gradient-to-r from-[var(--ai-primary)] via-[var(--ai-secondary)] to-[#8B5CF6] bg-clip-text text-transparent">
+                2026
+              </span>
+            </h2>
 
-  {/* Heading */}
-  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight max-w-4xl">
-    Summer Contest{" "}
-    <span className="bg-gradient-to-r from-[var(--ai-primary)] via-[var(--ai-secondary)] to-[#8B5CF6] bg-clip-text text-transparent">
-      2026
-    </span>
-  </h2>
+            {/* Subjects */}
+            <p className="mt-4 text-base sm:text-lg md:text-xl">
+              <span className="text-pink-500">English</span>
+              {" • "}
+              <span className="text-[#ffc52f]">Maths</span>
+              {" • "}
+              <span className="text-[#ed1b24]">Science</span>
+            </p>
 
-  {/* Subjects */}
- <p className="mt-4 text-base sm:text-lg md:text-xl">
-  <span className="text-pink-500">English</span>
-  {" • "}
-  <span className="text-[#ffc52f]">Maths</span>
-  {" • "}
-  <span className="text-[#ed1b24]">Science</span>
-</p>
+            {/* Description */}
+            <p className="text-[#F7E7FF] text-sm sm:text-base md:text-lg mt-4 max-w-xl">
+              For Students (Grade 1–12) <br />
+              Win Medals, Certificates &{" "}
+              <span className="text-[#ffc52f] font-semibold">
+                National Recognition
+              </span>
+            </p>
 
-  {/* Description */}
-  <p className="text-[#F7E7FF] text-sm sm:text-base md:text-lg mt-4 max-w-xl">
-    For Students (Grade 1–12) <br />
-    Win Medals, Certificates &{" "}
-    <span className="text-[#ffc52f] font-semibold">
-      National Recognition
-    </span>
-  </p>
-
-  <div className="flex flex-col sm:flex-row gap-4 my-8">
-    
-    <Link href="/summerContest/ContestSignUp">
-      <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white text-base md:text-lg font-semibold rounded-full py-3 px-6 shadow-lg hover:scale-105 transition">
-        Register Now →
-      </button>
-    </Link>
-
-  </div>
-</div>
+            <div className="flex flex-col sm:flex-row gap-4 my-8">
+              <Link href="/summerContest/ContestSignUp">
+                <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white text-base md:text-lg font-semibold rounded-full py-3 px-6 shadow-lg hover:scale-105 transition">
+                  Register Now →
+                </button>
+              </Link>
+            </div>
+          </div>
 
           <div className="relative lg:absolute bottom-0 left-1/2 z-20 flex w-full max-w-[1100px] -translate-x-1/2 lg:translate-y-1/2 flex-col flex-wrap justify-center gap-6 px-4 sm:flex-row sm:items-stretch sm:justify-center">
             {summerContests.map(({ image, title, deadline }, index) => (
@@ -205,8 +199,8 @@ const SummerContest = () => {
                       </span>
                     </div>
                   </div>
-                 
-                   <Link href="/summerContest/ContestSignUp">
+
+                  <Link href="/summerContest/ContestSignUp">
                     <button className="bg-pink-500 text-white font-bold text-sm md:text-base rounded-full px-4 py-2.5 shadow-[0_10px_24px_rgba(109,40,217,0.25)]">
                       <Trophy size={16} className="inline mr-2 mb-1" />
                       Register Now
@@ -271,31 +265,31 @@ const SummerContest = () => {
 
             <div className="mt-6 text-center max-w-5xl px-4">
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#ffc52f]">
-               <span className="text-[#ed1b24]">
-                 I Am Scientist and Moonlight Publishers
- {" "}</span>
-                <span className="">
-                 Building a
-                </span>{" "}
-                Learning Collaboration
+                <span className="text-[#ed1b24]">
+                  I Am Scientist and Moonlight Publishers{" "}
+                </span>
+                <span className="">Building a</span> Learning Collaboration
               </h3>
               <p className="text-base sm:text-lg text-[#4B5563] mt-5">
-                I Am Scientist and Moonlight Publishers have joined forces to deliver an innovative online summer AI contest experience.
-Together, we provide engaging competition materials, smart learning resources, and student-friendly guides designed to make preparation more interactive, practical, and future-ready.
+                I Am Scientist and Moonlight Publishers have joined forces to
+                deliver an innovative online summer AI contest experience.
+                Together, we provide engaging competition materials, smart
+                learning resources, and student-friendly guides designed to make
+                preparation more interactive, practical, and future-ready.
               </p>
             </div>
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm md:text-base text-[#374151] px-4">
               <div className="flex items-center gap-2 bg-white border border-[rgba(109,40,217,0.22)] rounded-full px-4 py-2">
-                <Check size={16} className="text-[#ed1b24]" />
+                {/* <Check size={15} className="text-[#ed1b24]" /> --Glitching On Mobile screens-- */}
                 Contest preparation kits
               </div>
               <div className="text-white flex items-center gap-2 bg-[#ffc52f] border border-[rgba(251,191,36)] rounded-full px-4 py-2 shadow-[0_8px_20px_rgba(0,0,0,0.06)]">
-                <Check size={16} className="text-white" />
+                {/* <Check size={15} className="text-white" /> --Glitching On Mobile screens-- */}
                 Teacher & student support
               </div>
               <div className="flex items-center gap-2 bg-white border border-[rgba(109,40,217,0.22)] rounded-full px-4 py-2 shadow-[0_8px_20px_rgba(0,0,0,0.06)]">
-                <Check size={16} className="text-[#ed1b24]" />
+                {/* <Check size={15} className="text-[#ed1b24]" />  --Glitching On Mobile screens-- */}
                 Curriculum‑aligned content
               </div>
             </div>
@@ -303,7 +297,7 @@ Together, we provide engaging competition materials, smart learning resources, a
         </section>
 
         <section className="!bg-white">
-          <SummerCompetition  />
+          <SummerCompetition />
         </section>
 
         <section className="bg-gradient-to-b from-[#F8FAFC] via-[#EEF2FF] to-[#ed1b24]/60 py-16 sm:py-24 relative overflow-hidden px-4 font-inter">
@@ -322,7 +316,7 @@ Together, we provide engaging competition materials, smart learning resources, a
                 <div className="hidden md:block bg-white w-full h-full -rotate-[10deg] absolute -left-[55%] translate-x-1/2 top-1/2 -translate-y-1/2 rounded-2xl shadow-lg z-10" />
                 <video
                   src="/summerContest/introduction.mp4"
-                          ref={videoRef}
+                  ref={videoRef}
                   autoPlay
                   controls
                   playsInline
@@ -335,13 +329,17 @@ Together, we provide engaging competition materials, smart learning resources, a
 
               <div className="bg-white border border-[rgba(109,40,217,0.22)] rounded-2xl p-6 sm:p-8 w-full flex flex-col justify-center md:col-span-3 shadow-[0_16px_40px_rgba(0,0,0,0.08)]">
                 <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-[var(--ai-primary)]">
-                    Interactive Learning Experience
+                  Interactive Learning Experience
                 </p>
                 <h3 className="text-2xl sm:text-3xl font-extrabold mt-2 leading-tight text-[#1F1F1F]">
                   Ready to discover something new?
                 </h3>
                 <p className="text-[#4B5563] mt-3 text-sm sm:text-base">
-                   Experience a smarter way of learning through interactive video lessons designed to simplify complex concepts. Watch, understand, and explore topics step by step with AI-guided explanations that make learning engaging, practical, and easy to follow.
+                  Experience a smarter way of learning through interactive video
+                  lessons designed to simplify complex concepts. Watch,
+                  understand, and explore topics step by step with AI-guided
+                  explanations that make learning engaging, practical, and easy
+                  to follow.
                 </p>
               </div>
             </div>
@@ -355,7 +353,10 @@ Together, we provide engaging competition materials, smart learning resources, a
                   Earn Certificates and Celebrate Success
                 </h3>
                 <p className="text-[#4B5563] mt-3 text-sm sm:text-base">
-                    Showcase your hard work and accomplishments with official certificates awarded upon completion. Celebrate your success and gain recognition for your performance with credentials that highlight your dedication and achievement.
+                  Showcase your hard work and accomplishments with official
+                  certificates awarded upon completion. Celebrate your success
+                  and gain recognition for your performance with credentials
+                  that highlight your dedication and achievement.
                 </p>
               </div>
 

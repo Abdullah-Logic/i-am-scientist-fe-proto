@@ -120,15 +120,14 @@ const ContestSignup: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 py-12 relative overflow-hidden">
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute -top-12 left-0 right-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60 z-0"></div>
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute top-0 right-0 blur-xl backdrop-blur-2xl rounded-tr-full rounded-br-full opacity-80 z-0"></div>
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute top-0 left-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60 z-0"></div>
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute top-1/2 right-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60 z-0"></div>
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute top-1/2 left-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60 z-0"></div>
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute bottom-4 left-0 blur-xl backdrop-blur-2xl rounded-tr-full rounded-br-full opacity-80 z-0"></div>
+      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute bottom-4 right-0 blur-xl backdrop-blur-2xl rounded-tr-full rounded-br-full opacity-80 z-0"></div>
 
-      <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute -top-12 left-0 right-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60"></div>
-  <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute top-0 right-0 blur-xl backdrop-blur-2xl rounded-tr-full rounded-br-full opacity-80"></div>
-  <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute top-0 left-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60"></div>
-  <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute top-1/2 right-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60"></div>
-  <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#1F3174] absolute top-1/2 left-0 mx-auto blur-xl backdrop-blur-4xl rounded-bl-full rounded-br-full opacity-60"></div>
-  <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute bottom-4 left-0 blur-xl backdrop-blur-2xl rounded-tr-full rounded-br-full opacity-80 z-10"></div>
-  <div className="w-32 h-32 2xl:w-40 2xl:h-40 bg-[#6C0988] absolute bottom-4 right-0 blur-xl backdrop-blur-2xl rounded-tr-full rounded-br-full opacity-80 z-10"></div>
-  
       {/* Background Circles */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-[#6D28D9] opacity-10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute top-0 right-0 w-72 h-72 bg-[#9333EA] opacity-10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
