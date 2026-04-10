@@ -795,7 +795,7 @@ const navbarItems = [
   { name: "Teacher", path: "/teacher" },
   { name: "Uni Plus", path: "/uniPlus" },
   // { name: "Free Tools", path: "/free-tools" },
-  { name: "Summer Contest", path: "/summerContest" },
+  { name: "Summer Contest", path: "/ias-mlp-summercontest" },
   { name: "Contact", path: "/contact" },
 ];
 
